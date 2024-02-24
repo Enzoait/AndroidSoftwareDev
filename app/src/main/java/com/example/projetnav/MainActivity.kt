@@ -8,7 +8,9 @@ import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -23,8 +25,8 @@ import com.example.projetnav.ui.series.episodes.Episode
 import com.example.projetnav.ui.series.episodes.EpisodeAdapter
 import com.example.projetnav.ui.series.personnages.Personnage
 import com.example.projetnav.ui.series.personnages.PersonnageAdapter
-
-/*class MainActivity : AppCompatActivity() {
+/*
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -50,7 +52,31 @@ import com.example.projetnav.ui.series.personnages.PersonnageAdapter
 }*/
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var navController: NavController
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+        navController = navHostFragment.navController
+
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.fragment_list_series,
+                R.id.navigation_dashboard,
+                R.id.navigation_notifications
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
+    }
+}
+
+/*class MainActivity : AppCompatActivity() {
     private lateinit var listSeriesViewModel: ListSeriesViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,9 +123,9 @@ class MainActivity : AppCompatActivity() {
         recycle_serie.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recycle_serie.adapter = SerieAdapter(listSeriesViewModel.series)
     }
-}
-
-/*class MainActivity : AppCompatActivity() {
+}*/
+/*
+class MainActivity : AppCompatActivity() {
     private lateinit var serieViewModel: SerieViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -120,7 +146,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         val personnages = listOf(
-            Personnage("Personnage 1", "Rôle 1", R.drawable.astronaut),
+            Personnage("Personnage 1", "Rôle 1", R.drawable.ic_launcher_background),
             Personnage("Personnage 2", "Rôle 2", R.drawable.astronaut),
             // ... Ajoutez d'autres personnages selon vos besoins
         )
@@ -205,4 +231,4 @@ class MainActivity : AppCompatActivity() {
         recyclerPersonnages.visibility = View.GONE
         recyclerEpisodes.visibility = View.VISIBLE
     }
-}*/
+*/
