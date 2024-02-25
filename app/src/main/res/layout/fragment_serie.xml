@@ -175,7 +175,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_episodes"
-            android:layout_width="320dp"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

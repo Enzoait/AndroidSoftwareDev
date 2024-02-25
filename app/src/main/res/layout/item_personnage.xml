@@ -6,13 +6,14 @@
     android:layout_height="wrap_content"
     android:padding="8dp">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/personnage_image"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/circleImageView"/>
 
     <TextView
         android:id="@+id/personnage_name"

@@ -13,7 +13,7 @@ class ListEpisodeAdapter(private val episodes: List<Episode>) :
     class EpisodeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.episode_title)
         val description: TextView = itemView.findViewById(R.id.episode_description)
-        val episodeNumber: TextView = itemView.findViewById(R.id.episode_number)
+
         val releaseDate: TextView = itemView.findViewById(R.id.episode_release_date)
     }
 
@@ -26,7 +26,7 @@ class ListEpisodeAdapter(private val episodes: List<Episode>) :
         val episode = episodes[position]
         holder.title.text = episode.title
         holder.description.text = episode.description
-        holder.episodeNumber.text = episode.episodeNumber.toString()
+
         holder.releaseDate.text = episode.releaseDate
     }
 

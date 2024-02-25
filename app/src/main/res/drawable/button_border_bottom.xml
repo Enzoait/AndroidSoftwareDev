@@ -1,0 +1,11 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@android:color/transparent" />
+    <stroke
+        android:width="2dp"
+        android:color="#FFA500" /> <!-- Couleur orange -->
+    <padding android:top="0dp"
+        android:left="0dp"
+        android:right="0dp"
+        android:bottom="2dp" /> <!-- Épaisseur du trait en bas -->
+</shape>

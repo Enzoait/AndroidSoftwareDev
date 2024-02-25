@@ -1,12 +1,13 @@
 package com.example.projetnav.ui.series
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.lifecycle.ViewModelProvider
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projetnav.R
@@ -14,15 +15,25 @@ import com.example.projetnav.ui.series.episodes.Episode
 import com.example.projetnav.ui.series.personnages.Personnage
 
 class FragmentListSeries : Fragment() {
-    private lateinit var listSeriesViewModel: ListSeriesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_list_series, container, false)
 
-        listSeriesViewModel = ViewModelProvider(this).get(ListSeriesViewModel::class.java)
+
+
+
+        val rootView = inflater.inflate(R.layout.fragment_list_series, container, false)
+
+
+
+        return rootView
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        super.onViewCreated(view, savedInstanceState)
 
         val series = listOf(
             Serie(
@@ -39,12 +50,13 @@ class FragmentListSeries : Fragment() {
                 personnages = listOf(
                     Personnage("Personnage 1", "Rôle 1", R.drawable.astronaut),
                     Personnage("Personnage 2", "Rôle 2", R.drawable.astronaut),
-                    // ... Ajoutez d'autres personnages selon vos besoins
+                    Personnage("Personnage 3", "Rôle 3", R.drawable.astronaut),
+                    Personnage("Personnage 4", "Rôle 4", R.drawable.astronaut),
                 ),
                 episodes = listOf(
                     Episode("Épisode 1", "Description de l'épisode 1", 1, "01/01/2022"),
                     Episode("Épisode 2", "Description de l'épisode 2", 2, "02/01/2022"),
-                    // ... Ajoutez d'autres épisodes selon vos besoins
+
                 )
             ),
             Serie(
@@ -69,12 +81,12 @@ class FragmentListSeries : Fragment() {
                 personnages = listOf(
                     Personnage("Personnage 1", "Rôle 1", R.drawable.astronaut),
                     Personnage("Personnage 2", "Rôle 2", R.drawable.astronaut),
-                    // ... Ajoutez d'autres personnages selon vos besoins
+
                 ),
                 episodes = listOf(
                     Episode("Épisode 1", "Description de l'épisode 1", 1, "01/01/2022"),
                     Episode("Épisode 2", "Description de l'épisode 2", 2, "02/01/2022"),
-                    // ... Ajoutez d'autres épisodes selon vos besoins
+
                 )
             ),
             Serie(
@@ -90,12 +102,17 @@ class FragmentListSeries : Fragment() {
                 personnages = listOf(
                     Personnage("Personnage 1", "Rôle 1", R.drawable.astronaut),
                     Personnage("Personnage 2", "Rôle 2", R.drawable.astronaut),
-                    // ... Ajoutez d'autres personnages selon vos besoins
+                    Personnage("Personnage 3", "Rôle 3", R.drawable.astronaut),
+                    Personnage("Personnage 4", "Rôle 4", R.drawable.astronaut),
+                    Personnage("Personnage 5", "Rôle 5", R.drawable.astronaut),
+                    Personnage("Personnage 6", "Rôle 6", R.drawable.astronaut),
+                    Personnage("Personnage 7", "Rôle 7", R.drawable.astronaut),
+                    Personnage("Personnage 8", "Rôle 8", R.drawable.astronaut),
                 ),
                 episodes = listOf(
                     Episode("Épisode 1", "Description de l'épisode 1", 1, "01/01/2022"),
                     Episode("Épisode 2", "Description de l'épisode 2", 2, "02/01/2022"),
-                    // ... Ajoutez d'autres épisodes selon vos besoins
+                    Episode("Épisode 3", "Description de l'épisode 3", 2, "02/01/2022"),
                 )
             ),
             Serie(
@@ -118,12 +135,12 @@ class FragmentListSeries : Fragment() {
                 personnages = listOf(
                     Personnage("Personnage 1", "Rôle 1", R.drawable.astronaut),
                     Personnage("Personnage 2", "Rôle 2", R.drawable.astronaut),
-                    // ... Ajoutez d'autres personnages selon vos besoins
+
                 ),
                 episodes = listOf(
                     Episode("Épisode 1", "Description de l'épisode 1", 1, "01/01/2022"),
                     Episode("Épisode 2", "Description de l'épisode 2", 2, "02/01/2022"),
-                    // ... Ajoutez d'autres épisodes selon vos besoins
+
                 )
             ),
             Serie(
@@ -143,12 +160,12 @@ class FragmentListSeries : Fragment() {
                 personnages = listOf(
                     Personnage("Personnage 1", "Rôle 1", R.drawable.astronaut),
                     Personnage("Personnage 2", "Rôle 2", R.drawable.astronaut),
-                    // ... Ajoutez d'autres personnages selon vos besoins
+
                 ),
                 episodes = listOf(
                     Episode("Épisode 1", "Description de l'épisode 1", 1, "01/01/2022"),
                     Episode("Épisode 2", "Description de l'épisode 2", 2, "02/01/2022"),
-                    // ... Ajoutez d'autres épisodes selon vos besoins
+
                 )
             ),
             Serie(
@@ -170,12 +187,12 @@ class FragmentListSeries : Fragment() {
                 personnages = listOf(
                     Personnage("Personnage 1", "Rôle 1", R.drawable.astronaut),
                     Personnage("Personnage 2", "Rôle 2", R.drawable.astronaut),
-                    // ... Ajoutez d'autres personnages selon vos besoins
+
                 ),
                 episodes = listOf(
                     Episode("Épisode 1", "Description de l'épisode 1", 1, "01/01/2022"),
                     Episode("Épisode 2", "Description de l'épisode 2", 2, "02/01/2022"),
-                    // ... Ajoutez d'autres épisodes selon vos besoins
+
                 )
             ),
             Serie(
@@ -194,12 +211,12 @@ class FragmentListSeries : Fragment() {
                 personnages = listOf(
                     Personnage("Personnage 1", "Rôle 1", R.drawable.astronaut),
                     Personnage("Personnage 2", "Rôle 2", R.drawable.astronaut),
-                    // ... Ajoutez d'autres personnages selon vos besoins
+
                 ),
                 episodes = listOf(
                     Episode("Épisode 1", "Description de l'épisode 1", 1, "01/01/2022"),
                     Episode("Épisode 2", "Description de l'épisode 2", 2, "02/01/2022"),
-                    // ... Ajoutez d'autres épisodes selon vos besoins
+
                 )
             ),
             Serie(
@@ -217,12 +234,12 @@ class FragmentListSeries : Fragment() {
                 personnages = listOf(
                     Personnage("Personnage 1", "Rôle 1", R.drawable.astronaut),
                     Personnage("Personnage 2", "Rôle 2", R.drawable.astronaut),
-                    // ... Ajoutez d'autres personnages selon vos besoins
+
                 ),
                 episodes = listOf(
                     Episode("Épisode 1", "Description de l'épisode 1", 1, "01/01/2022"),
                     Episode("Épisode 2", "Description de l'épisode 2", 2, "02/01/2022"),
-                    // ... Ajoutez d'autres épisodes selon vos besoins
+
                 )
             ),
             Serie(
@@ -246,22 +263,65 @@ class FragmentListSeries : Fragment() {
                 personnages = listOf(
                     Personnage("Personnage 1", "Rôle 1", R.drawable.astronaut),
                     Personnage("Personnage 2", "Rôle 2", R.drawable.astronaut),
-                    // ... Ajoutez d'autres personnages selon vos besoins
+
                 ),
                 episodes = listOf(
                     Episode("Épisode 1", "Description de l'épisode 1", 1, "01/01/2022"),
                     Episode("Épisode 2", "Description de l'épisode 2", 2, "02/01/2022"),
-                    // ... Ajoutez d'autres épisodes selon vos besoins
+
                 )
             )
         )
 
-        listSeriesViewModel.series = series
-
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_series)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        recyclerView.adapter = ListSerieAdapter(listSeriesViewModel.series)
-
-        return view
+        view.findViewById<RecyclerView>(R.id.recycler_series).apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = SeriesAdapter(series, object : OnItemClickListener {
+                override fun onItemClicked(serie: Serie) {
+                    findNavController().navigate(
+                        FragmentListSeriesDirections.actionListFragmentToDetailsFragment(serie)
+                    )
+                }
+            })
+        }
     }
+}
+
+class SeriesAdapter(private val series: List<Serie>, val listener: OnItemClickListener) :
+    RecyclerView.Adapter<SeriesAdapter.SeriesViewHolder>() {
+
+    inner class SeriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val title: TextView = itemView.findViewById(R.id.titre_serie)
+        val image: ImageView = itemView.findViewById(R.id.image_serie)
+        val studio: TextView = itemView.findViewById(R.id.studio)
+        val nbepisodes: TextView = itemView.findViewById(R.id.nb_episodes)
+        val annee: TextView = itemView.findViewById(R.id.annee)
+
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SeriesViewHolder {
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_serie, parent, false)
+        return SeriesViewHolder(itemView)
+    }
+
+    override fun onBindViewHolder(holder: SeriesViewHolder, position: Int) {
+        val currentItem = series[position]
+
+        holder.title.text = currentItem.title
+        holder.image.setImageResource(currentItem.imageResId)
+        holder.studio.text = currentItem.studio
+        holder.nbepisodes.text = currentItem.numberOfEpisodes.toString()
+        holder.annee.text = currentItem.year.toString()
+
+        holder.itemView.setOnClickListener {
+            val action = FragmentListSeriesDirections.actionListFragmentToDetailsFragment(currentItem)
+            it.findNavController().navigate(action)
+        }
+    }
+
+    override fun getItemCount() = series.size
+}
+
+interface OnItemClickListener {
+    fun onItemClicked(serie: Serie)
 }
