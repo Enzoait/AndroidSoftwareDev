@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "CoursApplication"
+rootProject.name = "Projet nav"
 include(":app")
  
