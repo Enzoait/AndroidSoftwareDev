@@ -4,12 +4,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projetnav.R
+import com.example.projetnav.ui.series.ListSeriesFragmentDirections
 import com.example.projetnav.ui.series.ListSeriesViewModel
-import com.example.projetnav.ui.series.SerieAdapter
 import com.example.projetnav.ui.series.Serie
+import com.example.projetnav.ui.series.SerieFragmentDirections
 
 class ListSeriesFragment : Fragment() {
     private lateinit var listSeriesViewModel: ListSeriesViewModel
@@ -55,7 +57,7 @@ class ListSeriesFragment : Fragment() {
 
     private fun navigateToSerieDetails(serie: Serie) {
         // Use Navigation Component to navigate to SerieFragment
-        val action = ListSeriesFragmentDirection.actionListSeriesToSerieDetails(serie)
+        val action = ListSeriesFragmentDirections.actionListSeriesToSerieDetails(serie)
         findNavController().navigate(action)
     }
 }
