@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projetnav.R
 
-class PersonnageAdapter(private val personnages: List<Personnage>) :
-    RecyclerView.Adapter<PersonnageAdapter.PersonnageViewHolder>() {
+class ListPersonnageAdapter(private val personnages: List<Personnage>) :
+    RecyclerView.Adapter<ListPersonnageAdapter.PersonnageViewHolder>() {
 
     class PersonnageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.personnage_name)

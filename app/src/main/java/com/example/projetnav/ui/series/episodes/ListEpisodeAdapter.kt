@@ -7,8 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projetnav.R
 
-class EpisodeAdapter(private val episodes: List<Episode>) :
-    RecyclerView.Adapter<EpisodeAdapter.EpisodeViewHolder>() {
+class ListEpisodeAdapter(private val episodes: List<Episode>) :
+    RecyclerView.Adapter<ListEpisodeAdapter.EpisodeViewHolder>() {
 
     class EpisodeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.episode_title)
@@ -18,9 +18,8 @@ class EpisodeAdapter(private val episodes: List<Episode>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EpisodeViewHolder {
-        val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_episode, parent, false)
-        return EpisodeViewHolder(itemView)
+        return EpisodeViewHolder(LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_episode, parent, false))
     }
 
     override fun onBindViewHolder(holder: EpisodeViewHolder, position: Int) {

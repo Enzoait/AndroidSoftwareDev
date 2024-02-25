@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projetnav.R
 import com.example.projetnav.ui.series.episodes.Episode
-import com.example.projetnav.ui.series.episodes.EpisodeAdapter
+import com.example.projetnav.ui.series.episodes.ListEpisodeAdapter
 import com.example.projetnav.ui.series.personnages.Personnage
-import com.example.projetnav.ui.series.personnages.PersonnageAdapter
+import com.example.projetnav.ui.series.personnages.ListPersonnageAdapter
 
 class SerieActivity : AppCompatActivity() {
     private lateinit var serieViewModel: SerieViewModel
@@ -32,25 +32,21 @@ class SerieActivity : AppCompatActivity() {
             studio = "Nom du studio",
             numberOfEpisodes = 10,
             year = 2022,
-            story = "Histoire"
-        )
-
-        val personnages = listOf(
-            Personnage("Personnage 1", "Rôle 1", R.drawable.astronaut),
-            Personnage("Personnage 2", "Rôle 2", R.drawable.astronaut),
-            // ... Ajoutez d'autres personnages selon vos besoins
-        )
-
-        val episodes = listOf(
-            Episode("Épisode 1", "Description de l'épisode 1", 1, "01/01/2022"),
-            Episode("Épisode 2", "Description de l'épisode 2", 2, "02/01/2022"),
-            // ... Ajoutez d'autres épisodes selon vos besoins
+            story = "Histoire",
+            personnages = listOf(
+                Personnage("Personnage 1", "Rôle 1", R.drawable.astronaut),
+                Personnage("Personnage 2", "Rôle 2", R.drawable.astronaut),
+                // ... Ajoutez d'autres personnages selon vos besoins
+            ),
+            episodes = listOf(
+                Episode("Épisode 1", "Description de l'épisode 1", 1, "01/01/2022"),
+                Episode("Épisode 2", "Description de l'épisode 2", 2, "02/01/2022"),
+                // ... Ajoutez d'autres épisodes selon vos besoins
+            )
         )
 
         // Mise à jour du ViewModel avec les données
         serieViewModel.serie = serie
-        serieViewModel.personnages = personnages
-        serieViewModel.episodes = episodes
 
         // Mise à jour de l'interface utilisateur
 
@@ -65,12 +61,12 @@ class SerieActivity : AppCompatActivity() {
         // Mise à jour du recycler_personnages
         val recycle_perso = findViewById<View>(R.id.recycler_personnages) as RecyclerView
         recycle_perso.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        recycle_perso.adapter = PersonnageAdapter(serieViewModel.personnages)
+        recycle_perso.adapter = ListPersonnageAdapter(serie.personnages)
 
         // Mise à jour du recycler_episodes
         val recycle_episode = findViewById<View>(R.id.recycler_episodes) as RecyclerView
         recycle_episode.layoutManager = LinearLayoutManager(this)
-        recycle_episode.adapter = EpisodeAdapter(serieViewModel.episodes)
+        recycle_episode.adapter = ListEpisodeAdapter(serie.episodes)
 
 
         val buttonHistoire = findViewById<Button>(R.id.button_histoire)

@@ -1,8 +1,11 @@
 package com.example.projetnav.ui.series
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -10,13 +13,14 @@ import com.example.projetnav.R
 import com.example.projetnav.ui.series.episodes.Episode
 import com.example.projetnav.ui.series.personnages.Personnage
 
-
-class ListSeriesActivity : AppCompatActivity() {
+class FragmentListSeries : Fragment() {
     private lateinit var listSeriesViewModel: ListSeriesViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_list_series)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_list_series, container, false)
 
         listSeriesViewModel = ViewModelProvider(this).get(ListSeriesViewModel::class.java)
 
@@ -254,8 +258,10 @@ class ListSeriesActivity : AppCompatActivity() {
 
         listSeriesViewModel.series = series
 
-        val recycle_serie = findViewById<View>(R.id.recycler_series) as RecyclerView
-        recycle_serie.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        recycle_serie.adapter = ListSerieAdapter(listSeriesViewModel.series)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_series)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        recyclerView.adapter = ListSerieAdapter(listSeriesViewModel.series)
+
+        return view
     }
 }

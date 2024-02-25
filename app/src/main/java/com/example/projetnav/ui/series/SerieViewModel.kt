@@ -6,6 +6,4 @@ import com.example.projetnav.ui.series.personnages.Personnage
 
 class SerieViewModel : ViewModel() {
     var serie: Serie? = null
-    var personnages: List<Personnage> = emptyList()
-    var episodes: List<Episode> = emptyList()
 }
