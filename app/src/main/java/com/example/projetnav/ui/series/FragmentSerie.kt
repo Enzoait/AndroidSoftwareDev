@@ -33,7 +33,7 @@ class FragmentSerie : Fragment() {
         val serie = FragmentSerieArgs.fromBundle(requireArguments()).serie
         /*val args: FragmentSerieArgs by navArgs()
         val serie: Serie = args.serie*/
-
+        view.findViewById<ImageView>(R.id.background).setImageResource(serie.imageResId)
         view.findViewById<TextView>(R.id.titre_serie).text = serie.title
         view.findViewById<ImageView>(R.id.image_serie).setImageResource(serie.imageResId)
         view.findViewById<TextView>(R.id.studio).text = serie.studio
